@@ -1,0 +1,40 @@
+---
+globs: src/services/excelService.ts,src/services/templateService.ts
+description: "Обработка Excel файлов"
+---
+
+# Обработка Excel файлов
+
+## Библиотеки:
+- Используйте ExcelJS для создания и чтения Excel файлов
+- Используйте xlsx для быстрого парсинга в LangChain сервисе
+- Работайте с Buffer для передачи файлов
+
+## Валидация файлов:
+- Проверяйте MIME типы файлов
+- Поддерживайте .xlsx и .xls форматы
+- Валидируйте структуру файлов перед обработкой
+
+## Создание файлов:
+- Используйте шаблоны с настраиваемыми заголовками и шириной колонок
+- Применяйте стили к заголовкам (жирный шрифт, выравнивание)
+- Возвращайте Buffer для отправки через Telegram
+
+## Обработка данных:
+- Преобразуйте Excel в текстовый формат для LLM
+- Используйте JSON формат для лучшей читаемости
+- Обрабатывайте пустые строки и ячейки
+
+## Структура сервиса:
+```typescript
+export class ExcelService {
+  static async excelToText(fileBuffer: FileBuffer): Promise<string>
+  static async createExcelFile(data: any[], template: CreateExcelOptions): Promise<Buffer>
+  static isValidExcelFile(fileBuffer: FileBuffer): boolean
+}
+```
+
+## Обработка ошибок:
+- Логируйте ошибки чтения/записи файлов
+- Предоставляйте понятные сообщения об ошибках
+- Валидируйте входные данные перед обработкой

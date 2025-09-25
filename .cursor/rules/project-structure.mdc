@@ -1,0 +1,34 @@
+---
+alwaysApply: true
+description: "Структура проекта invoice-bot"
+---
+
+# Структура проекта Invoice Bot
+
+Это Telegram бот для обработки инвойсов с использованием LangChain и OpenAI.
+
+## Основные файлы:
+- [src/index.ts](mdc:src/index.ts) - главная точка входа приложения
+- [src/bot/index.ts](mdc:src/bot/index.ts) - инициализация и настройка Telegram бота
+- [src/bot/commands/generate.ts](mdc:src/bot/commands/generate.ts) - команда обработки инвойсов
+
+## Сервисы:
+- [src/services/langchainService.ts](mdc:src/services/langchainService.ts) - интеграция с OpenAI через LangChain для парсинга инвойсов
+- [src/services/excelService.ts](mdc:src/services/excelService.ts) - работа с Excel файлами
+- [src/services/templateService.ts](mdc:src/services/templateService.ts) - генерация шаблонов для 1С
+
+## Типы:
+- [src/types/index.ts](mdc:src/types/index.ts) - TypeScript интерфейсы и типы
+
+## Конфигурация:
+- [package.json](mdc:package.json) - зависимости и скрипты
+- [tsconfig.json](mdc:tsconfig.json) - настройки TypeScript
+- [.env.example](mdc:.env.example) - пример переменных окружения
+
+## Архитектура:
+Проект использует многоэтапную обработку документов:
+1. Пользователь отправляет команду `/invoice`
+2. Бот запрашивает инвойс от поставщика
+3. Затем инвойс для покупателя
+4. Обрабатывает оба файла через LangChain
+5. Генерирует Excel файлы для 1С

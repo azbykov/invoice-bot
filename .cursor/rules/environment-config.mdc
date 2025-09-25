@@ -1,0 +1,37 @@
+---
+alwaysApply: true
+description: "Конфигурация окружения и переменных"
+---
+
+# Конфигурация окружения
+
+## Обязательные переменные:
+- `BOT_TOKEN` - токен Telegram бота
+- `OPENAI_API_KEY` - API ключ OpenAI
+
+## Загрузка конфигурации:
+- Используйте dotenv для загрузки переменных из .env файла
+- Проверяйте наличие обязательных переменных при запуске
+- Выбрасывайте ошибки с понятными сообщениями
+
+## Структура .env файла:
+```env
+BOT_TOKEN=your_telegram_bot_token
+OPENAI_API_KEY=your_openai_api_key
+```
+
+## Проверка конфигурации:
+```typescript
+if (!process.env.BOT_TOKEN) {
+  throw new Error('BOT_TOKEN must be provided!');
+}
+```
+
+## Безопасность:
+- Никогда не коммитьте .env файлы
+- Используйте .env.example для документации
+- Добавляйте .env в .gitignore
+
+## API запросы:
+- Используйте Bearer токен в заголовке Authorization для API запросов
+- Формат: `Authorization: Bearer <token>`

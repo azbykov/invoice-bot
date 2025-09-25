@@ -1,0 +1,39 @@
+---
+globs: *.ts,*.tsx
+description: "Стандарты TypeScript для проекта"
+---
+
+# Стандарты TypeScript
+
+## Общие правила:
+- Всегда используйте точки с запятой
+- Используйте строгую типизацию (strict: true в tsconfig.json)
+- Предпочитайте интерфейсы типам для объектов
+- Используйте async/await вместо Promise.then()
+
+## Импорты:
+- Группируйте импорты: сначала внешние библиотеки, затем внутренние модули
+- Используйте именованные импорты вместо default когда возможно
+- Пример:
+```typescript
+import { Telegraf } from 'telegraf';
+import { config } from 'dotenv';
+import { LangChainService } from '../services/langchainService';
+```
+
+## Обработка ошибок:
+- Всегда оборачивайте асинхронные операции в try-catch
+- Логируйте ошибки с помощью console.error
+- Отправляйте пользователю понятные сообщения об ошибках
+
+## Типы и интерфейсы:
+- Определяйте интерфейсы для сложных объектов
+- Используйте enum для константных значений
+- Пример из проекта:
+```typescript
+enum ProcessingStage {
+  WAITING_SUPPLIER_INVOICE = 'WAITING_SUPPLIER_INVOICE',
+  WAITING_CLIENT_INVOICE = 'WAITING_CLIENT_INVOICE',
+  GENERATING_FILES = 'GENERATING_FILES'
+}
+```
